@@ -1,0 +1,193 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .header {
+    @apply 
+            
+            h-[120px]
+
+  }
+  .h-uno{
+    @apply
+    bg-black
+    p-2
+    flex
+  }
+  .h-dos{
+    
+    @apply
+    bg-slate-700
+    p-2
+    
+    flex
+    h-[65px]
+  }
+/* Estilo para el input */
+.h-input {
+  @apply rounded-md
+          h-8
+          w-[20rem]
+          border-2
+          border-black
+          border-solid
+          pl-4
+          p-[0.3rem]
+          mt-2
+          ml-[34rem]
+          mr-[0.1rem]
+          bg-slate-200
+          font-serif
+          font-bold
+          transition-all duration-300 ease-in-out
+          transform scale-100;
+
+  &:hover {
+    @apply bg-white
+            shadow-md
+            transform scale-105; /* Ligeramente más grande al pasar el mouse */
+  }
+
+  &:focus {
+    @apply outline-none
+            border-blue-500
+            ring-2
+            ring-blue-300
+            transform scale-105; /* Ligeramente más grande al enfocarse */
+  }
+}
+
+/* Estilo para el botón */
+.h-button {
+  @apply bg-orange-400
+          cursor-pointer
+          mt-2
+          p-1
+          w-8
+          h-8
+          rounded-md
+          border-2
+          border-orange-700
+          border-solid
+          mr-[280px]
+          transition-all duration-300 ease-in-out
+          transform scale-100;
+
+  &:hover {
+    @apply bg-orange-500
+            shadow-lg
+            transform scale-110; /* Un poco más grande y con más sombra al pasar el mouse */
+  }
+
+  &:active {
+    @apply bg-orange-700
+            transform scale-95; /* Ligeramente más pequeño al hacer clic */
+  }
+
+
+}
+
+
+  .h-button2{
+    @apply
+    relative px-6 py-3 bg-transparent border-t-0 border-r-2 border-b-2 border-l-2 border-transparent shadow-none transition-all ease-in-out duration-500 hover:bg-blue-500/30 hover:border-blue-500/50 hover:shadow-lg transform hover:-translate-y-1;
+}
+
+.h-span{
+    @apply
+    text-white text-lg font-serif tracking-wider;
+}
+
+
+
+
+
+  .logo{
+    @apply
+    w-[5rem] h-[3rem]
+    shadow-md shadow-yellow-500
+    rounded-full
+  }
+
+  .card{
+    @apply
+    
+    bg-lime-400/50
+    rounded-lg
+    h-[20rem] w-[25rem]
+    grid
+    border border-red-500 
+    
+    
+    place-content-center
+    
+  }
+  .container1{
+    @apply
+   
+    m-11
+    pb-11
+    inset-0
+    absolute grid grid-cols-3 gap-4
+    
+    place-items-center
+   
+    
+  }
+  .footer{
+    @apply
+    bg-black
+    gap-x-11
+    h-[30rem]
+
+  }
+  @layer components {
+    .f-text {
+      @apply text-white font-extrabold font-sans hover:underline;
+    }
+  
+    .f-text:hover {
+      text-shadow: 2px 2px 4px #fde047; /* color amarillo */
+    }
+  
+    .f-text2 {
+      @apply text-white text-center font-extrabold font-sans hover:underline;
+    }
+  
+    .f-text2:hover {
+      text-shadow: 2px 2px 4px #fde047; /* color amarillo */
+    }
+
+    .sc-botton::before {
+      @apply absolute inset-0 bg-red-500 rounded-md scale-0 transition-all duration-300 ease-linear;
+    }
+    
+    .sc-botton:hover::before {
+      @apply scale-110;
+    }
+    /* esto es para animar un poco el fondo */
+    @keyframes gradientX {
+      0%, 100% {
+        background-size: 200% 200%;
+        background-position: left center;
+      }
+      50% {
+        background-size: 200% 200%;
+        background-position: right center;
+      }
+    }
+    
+    .animate-gradient-x {
+      animation: gradientX 8s ease infinite;
+      background-size: 200% 200%;
+    }
+
+    
+    
+    
+    
+  }
+  
+  
+}
