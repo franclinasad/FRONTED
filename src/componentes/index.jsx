@@ -27,43 +27,43 @@ export const Inicio = () => {
   }, []);
 
   return (
-    <div className={`relative overflow-hidden h-screen`}>
-      {/* Imagen actual */}
-      <div
-        className={`absolute inset-0 w-full h-full bg-cover bg-no-repeat bg-center transition-transform duration-1000 ${
-          slideOut ? "-translate-x-full" : "translate-x-0"
-        }`}
-        style={{ backgroundImage: `url(${images[currentImage]})` }}
-      ></div>
-      {/* Siguiente imagen para transición suave */}
-      <div
-        className={`absolute inset-0 w-full h-full bg-cover bg-no-repeat bg-center transition-transform duration-1000 ${
-          slideOut ? "translate-x-0" : "translate-x-full"
-        }`}
-        style={{
-          backgroundImage: `url(${images[(currentImage + 1) % images.length]})`,
-        }}
-      ></div>
-      {/* 
-             este es para tener escroll */}
-      <div className="absolute inset-0 w-full h-full overflow-y-auto">
-        <style>
-          {`::-webkit-scrollbar { display: none; }`}{" "}
-          {/* Esto es para navegadores basados en WebKit como Chrome y Safari */}
-        </style>
-        <div className="container1 absolute inset-0 grid grid-cols-3 place-items-center gap-4">
-          <div className="card">1</div>
-          <div className="card">2</div>
-          <div className="card">3</div>
-          <div className="card">4</div>
-          <div className="card">5</div>
-          <div className="card">6</div>
-          <div className="card">7</div>
-          <div className="card">8</div>
-          <div className="card">9</div>
-          <div className="card">10</div>
-          <div className="card">11</div>
-          <div className="card">12</div>
+    <div className=" min-h-screen main-container h-screen  relative">
+      <div className={`overflow-hidden h-full`}>
+        {/* Imagen actual */}
+        <div
+          className={`absolute inset-0 w-full h-full bg-cover bg-no-repeat bg-center transition-transform duration-1000 ${
+            slideOut ? "-translate-x-full" : "translate-x-0"
+          }`}
+          style={{ backgroundImage: `url(${images[currentImage]})` }}
+        ></div>
+        {/* Siguiente imagen para transición suave */}
+        <div
+          className={`absolute inset-0 w-full h-full bg-cover bg-no-repeat bg-center transition-transform duration-1000 ${
+            slideOut ? "translate-x-0" : "translate-x-full"
+          }`}
+          style={{
+            backgroundImage: `url(${images[(currentImage + 1) % images.length]})`,
+          }}
+        ></div>
+        {/* Contenedor con scroll */}
+        <div className="absolute inset-0 w-full h-full overflow-y-auto">
+          <style>
+            {`::-webkit-scrollbar { display: none; }`} {/* Esto es para navegadores basados en WebKit como Chrome y Safari */}
+          </style>
+          <div className="container1 grid grid-cols-3 place-items-center gap-4">
+            <div className="card">1</div>
+            <div className="card">2</div>
+            <div className="card">3</div>
+            <div className="card">4</div>
+            <div className="card">5</div>
+            <div className="card">6</div>
+            <div className="card">7</div>
+            <div className="card">8</div>
+            <div className="card">9</div>
+            <div className="card">10</div>
+            <div className="card">11</div>
+            <div className="card">12</div>
+          </div>
         </div>
       </div>
     </div>

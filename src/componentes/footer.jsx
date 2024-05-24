@@ -3,7 +3,7 @@ import React from "react";
 export const Footer = () => {
   return (
     <div className="footer">
-      <div className="flex p-16 gap-[120px]">
+      <div className="flex p-16 gap-[120px] ">
       <div className="f-text">
         <strong className="  underline text-2xl">Conócenos</strong><br/>
         Trabaja en Digital Dreams<br/>
@@ -27,7 +27,7 @@ export const Footer = () => {
         Publica tu Libro en Kindle
       </div>
       
-      <div className="f-text">
+      <div className="f-text ">
         <strong className="  underline text-2xl">
         Productos de Pago de Digital Dreams<br/> 
 

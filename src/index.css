@@ -6,24 +6,31 @@
   .header {
     @apply 
             
-            h-[120px]
+    h-[10%]
+    
+           
+
 
   }
-  .h-uno{
+  .h-uno {
     @apply
-    bg-black
+    bg-black /* Fondo oscuro */
     p-2
     flex
-  }
-  .h-dos{
-    
+}
+
+.h-dos {
     @apply
-    bg-slate-700
+    bg-slate-800 /* Azul profundo */
     p-2
-    
     flex
-    h-[65px]
-  }
+    h-[50%]
+}
+.h-uno:hover, .h-dos:hover {
+  transition: background-color 1s ease;
+}
+
+
 /* Estilo para el input */
 .h-input {
   @apply rounded-md
@@ -35,7 +42,7 @@
           pl-4
           p-[0.3rem]
           mt-2
-          ml-[34rem]
+          ml-[30rem]
           mr-[0.1rem]
           bg-slate-200
           font-serif
@@ -88,15 +95,56 @@
 
 }
 
-
-  .h-button2{
-    @apply
-    relative px-6 py-3 bg-transparent border-t-0 border-r-2 border-b-2 border-l-2 border-transparent shadow-none transition-all ease-in-out duration-500 hover:bg-blue-500/30 hover:border-blue-500/50 hover:shadow-lg transform hover:-translate-y-1;
+@keyframes underline {
+  0% {
+      width: 0;
+      border-radius: 50%; /* Bola al principio */
+      box-shadow: 0 0 5px rgba(255, 255, 0, 0.5); /* Sombras */
+  }
+  50% {
+      border-radius: 0; /* Cambiamos de bola a línea */
+      box-shadow: 0 0 5px rgba(255, 255, 0, 0.5); /* Sombras */
+  }
+  100% {
+      width: 100%;
+      box-shadow: 0 0 10px rgba(255, 255, 0, 0.5); /* Más sombra */
+  }
 }
+
+.h-button2 {
+  @apply h-10 relative px-6 py-3 bg-transparent border-t-0 border-r-0 border-b-0 border-l-0 shadow-none;
+  overflow: hidden;
+}
+
+.h-button2::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 3px;
+  background-image: linear-gradient(90deg, rgba(255, 255, 0, 0), rgba(255, 255, 0, 1)); /* Degradado */
+  transform-origin: left;
+}
+
+.h-button2:hover::after {
+  animation: underline 0.5s ease-in-out forwards;
+}
+
+.h-button2:active::after {
+  width: 100%;
+  animation: none; /* Detenemos la animación cuando el botón está activo */
+  border-radius: 0; /* Aseguramos que la línea no tenga bordes redondeados */
+  box-shadow: 0 0 10px rgba(255, 255, 0, 0.5); /* Añadimos sombra */
+}
+
+
 
 .h-span{
     @apply
-    text-white text-lg font-serif tracking-wider;
+    text-white text-lg font-serif tracking-wider
+    text-[0.9rem]
+    pb-[10rem]
 }
 
 
@@ -144,7 +192,7 @@
   }
   @layer components {
     .f-text {
-      @apply text-white font-extrabold font-sans hover:underline;
+      @apply text-white font-extrabold font-sans hover:underline object-contain
     }
   
     .f-text:hover {
@@ -152,7 +200,7 @@
     }
   
     .f-text2 {
-      @apply text-white text-center font-extrabold font-sans hover:underline;
+      @apply text-white text-center font-extrabold font-sans hover:underline
     }
   
     .f-text2:hover {
@@ -182,6 +230,33 @@
       animation: gradientX 8s ease infinite;
       background-size: 200% 200%;
     }
+
+    @keyframes unfold {
+      from {
+        transform: scaleY(0);
+      }
+      to {
+        transform: scaleY(1);
+      }
+    }
+    
+    @keyframes fold {
+      from {
+        transform: scaleY(1);
+      }
+      to {
+        transform: scaleY(0);
+      }
+    }
+    
+    .animate-unfold {
+      animation: unfold 0.5s ease forwards;
+    }
+    
+    .animate-fold {
+      animation: fold 0.5s ease forwards;
+    }
+    
 
     
     

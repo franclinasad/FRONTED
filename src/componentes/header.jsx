@@ -1,16 +1,21 @@
 import React from "react";
 import Logo from "../assets/image/OIG1.jpeg";
+import { Link } from "react-router-dom";
 
-export const Header = ({ onChangeActiveComponent }) => {
+export const Header = ({ onChangeActiveComponent,userId,toggleSidebar  }) => {
+
   return (
-    <div className="header mb-3">
+    <div className="header">
       <header>
         <div className="">
           <nav className="h-uno">
             <div>
+              <Link to="/inicio">
               <button onClick={() => onChangeActiveComponent("Inicio")}>
                 <img className="logo" src={Logo} alt="FLJ" />
               </button>
+              </Link>
+              
             </div>
             <input
               className="h-input"
@@ -37,20 +42,23 @@ export const Header = ({ onChangeActiveComponent }) => {
             </button>
 
             <li>
-              <button
-                className="relative overflow-hidden border-b-2 border-r-2 border-red-500 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out group hover:bg-blue-500/50 hover:shadow-lg hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
-                onClick={() => onChangeActiveComponent("ComponentPedidos")}
-              >
-                <span class="block relative z-10">PEDIDOS</span>
-              </button>
+             <Link to="/pedidos">
+                <button
+                    className=" h-10 object-contain border-b-2 border-r-2 border-red-500 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out group hover:bg-blue-500/50 hover:shadow-lg hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+                    onClick={() => onChangeActiveComponent("ComponentPedidos")}
+                  >
+                    <span class="block relative z-10 text-[0.8rem]">PEDIDOS</span>
+                  </button>
+             </Link>
             </li>
 
             <li>
+              <Link to="/carrito">
               <button
-                className="relative overflow-hidden border-b-2 border-r-2 border-red-500 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out group hover:bg-blue-500/50 hover:shadow-lg hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+                className=" h-10   border-b-2 border-r-2 border-red-500 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out group hover:bg-blue-500/50 hover:shadow-lg hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
                 onClick={() => onChangeActiveComponent("ComponentPedidos")}
               >
-                <span class="block relative z-10">
+                <span class="block relative z-10 text-[0.8rem]  ">
                   <svg
                     class="w-6 h-6 mr-2 inline-block"
                     fill="none"
@@ -68,6 +76,7 @@ export const Header = ({ onChangeActiveComponent }) => {
                   CARRITO
                 </span>
               </button>
+              </Link>
             </li>
           </nav>
         </div>
@@ -75,33 +84,46 @@ export const Header = ({ onChangeActiveComponent }) => {
           <nav>
             <ul className="h-dos">
               <li>
-                <button className="h-button2">
+   
+                <button className="h-button2" onClick={toggleSidebar}>
                   <span className="h-span">≡­ TODO</span>
                 </button>
+       
+               
               </li>
               <li>
+                <Link to="/ofertas">
                 <button
                   className="h-button2"
-                  onClick={() => onChangeActiveComponent("John")}
+                  
                 >
                   <span className="h-span">OFERTAS</span>
                 </button>
+                </Link>
+              
               </li>
               <li>
+                <Link to="/servicio-al-cliente">
                 <button
                   className="h-button2"
                   onClick={() => onChangeActiveComponent("ServicioCliente")}
                 >
                   <span className="h-span">SERVICIO AL CLIENTE</span>
                 </button>
+                </Link>
               </li>
               <li>
-                <button className="h-button2"
-                onClick={()=> onChangeActiveComponent('TipoPago')}
+                <Link to="/productos" >
+                <button
+                  className="h-button2"
+                  onClick={() => onChangeActiveComponent("TipoPago")}
                 >
                   <span className="h-span">PRODUCTOS</span>
                 </button>
+                </Link>
+                
               </li>
+              
             </ul>
           </nav>
         </div>
