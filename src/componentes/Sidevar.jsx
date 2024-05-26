@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const Sidebar = ({ isOpen, toggleSidebar  }) => {
+const Sidebar = ({ isOpen, toggleSidebar ,nombre }) => {
   const [isUserOpen, setIsUserOpen] = useState(false);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
 
@@ -26,7 +26,7 @@ const Sidebar = ({ isOpen, toggleSidebar  }) => {
         
         
         <div className="flex justify-between items-center mb-8 w-full">
-          <div className="text-2xl font-semibold">Usuario</div>
+          <div className="text-2xl font-semibold">{nombre}</div>
           
           {isOpen && (
             <button

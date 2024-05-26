@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8080/api/v1/login';
+const API_URL = 'http://localhost:8082/api/v1/login';
 
 class AuthService {
   async login(email, password) {
@@ -12,7 +12,11 @@ class AuthService {
       if (response.data.message === "Login successful") {
         // Retorna el ID del usuario extraído del cuerpo de la respuesta
         const userId = response.data.userId;
-        return userId;
+        const nombre = response.data.nombre;
+
+        console.log(nombre);
+        console.log(userId);
+        return {userId,nombre};
       } else {
         // Si la respuesta no contiene el mensaje "Login successful", lanza un error con el mensaje de la respuesta
         const errorMessage = typeof response.data === 'object' ? JSON.stringify(response.data) : response.data;

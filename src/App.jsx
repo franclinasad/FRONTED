@@ -7,7 +7,7 @@ import { Footer } from "./componentes/footer";
 import { ServicioCliente } from "./componentes/serviceClient";
 import { TranferenciaBancaria } from "./componentes/tranferenciaB";
 import { PagoYappy } from "./componentes/yappy";
-import { Inicio } from "./componentes";
+import { Inicio } from "./componentes/index";
 import Login from "./componentes/Login";
 
 
@@ -16,6 +16,7 @@ import Perfil from "./sidevarc/Pefil";
 import Saldo from "./sidevarc/Saldo";
 import Universidad from "./sidevarc/Universidad";
 import Autores from "./sidevarc/Autores";
+import { Browser } from "./componentes/browser";
 
 
 
@@ -29,6 +30,10 @@ function App() {
   const [userId, setUserId] = useState(null); 
   const [isSidebarOpen, setIsSidebarOpen] = useState(false); 
 
+  const [name,setName] = useState("");
+  
+  
+
 
   const handleSetActiveComponent = (componentName) => {
     setActiveComponent(componentName);
@@ -36,12 +41,19 @@ function App() {
 
   
 
-  const handleLoginSuccess = (id) => {
+  const handleLoginSuccess = (id,nombre) => {
     setIsLoggedIn(true); // Actualiza el estado cuando el usuario inicia sesión correctamente
     setUserId(id); 
+    setName(nombre);
+    
+
+
+    
+    
   };
 
-
+  console.log(name);
+  console.log(userId);
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen); // Alterna el estado de visibilidad del sidebar
@@ -65,17 +77,18 @@ function App() {
                   <Header userId={userId} onChangeActiveComponent={handleSetActiveComponent} toggleSidebar={toggleSidebar} />            
                   <Routes>
                     <Route path="/inicio" element={<Inicio />} />
-                    <Route path="/servicio-al-cliente" element={<ServicioCliente userId={userId}/>} />
+                    <Route path="/servicio-al-cliente" element={<ServicioCliente userId={userId} nombre={name} />} />
                     <Route path="/ofertas" element={<TranferenciaBancaria userId={userId}/>} />
                     <Route path="/productos" element={<PagoYappy userId={userId}/>} />
                     <Route path="/perfil" element={<Perfil userId={userId}/>} />
                     <Route path="/saldo" element={<Saldo userId={userId}/>} />
                     <Route path="/universidad" element={<Universidad userId={userId}/>} />
                     <Route path="/autores" element={<Autores userId={userId}/>} />
+                    <Route path="/browser"  element={<Browser/>}></Route>
 
                 </Routes>
                 <Footer />
-                <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar}   />
+                <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar}  nombre={name} />
                 </>
             )}
       </div>

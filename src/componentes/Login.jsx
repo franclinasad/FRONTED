@@ -159,13 +159,18 @@ const Login = ({ onLoginSuccess }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const userId = await AuthService.login(email, password);
+      const {userId, nombre} = await AuthService.login(email, password);
+
+      console.log(await AuthService.login(email, password));
+      
+
       console.log('ID del usuario:', userId);
+      console.log('nombre del usuario:', nombre);
 
       if (userId) {
         console.log('Inicio de sesión exitoso');
-        onLoginSuccess(userId);
-        navigate('/app');
+        onLoginSuccess(userId,nombre);
+        navigate('/inicio');
       } else {
         console.error('El servidor no devolvió el ID del usuario');
       }

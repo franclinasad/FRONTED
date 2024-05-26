@@ -161,11 +161,11 @@
   .card{
     @apply
     
-    bg-lime-400/50
+    bg-gray-100
     rounded-lg
-    h-[20rem] w-[25rem]
+    h-[23rem] w-[21rem]
     grid
-    border border-red-500 
+     
     
     
     place-content-center

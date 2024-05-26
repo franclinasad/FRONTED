@@ -22,6 +22,7 @@ export const Header = ({ onChangeActiveComponent,userId,toggleSidebar  }) => {
               type="text"
               placeholder="Buscar DigitalDreams(FLJ)"
             />
+             <Link to="/browser"> 
             <button className="h-button">
               <img src="" alt="" />
               <svg
@@ -40,6 +41,7 @@ export const Header = ({ onChangeActiveComponent,userId,toggleSidebar  }) => {
                 />
               </svg>
             </button>
+            </Link>
 
             <li>
              <Link to="/pedidos">

@@ -5,7 +5,7 @@ import { TranferenciaBancaria } from "./tranferenciaB";
 import { TargetaCredito } from "./TargetaCredito";
 import { Paypal } from "./Paypal";
 
-export const ServicioCliente = ({ userId }) => {
+export const ServicioCliente = ({ userId,nombre }) => {
   const [showPaymentType, setShowPaymentType] = useState(false);
   const [showPagoYappy, setShowPagoYappy] = useState(false);
   const [showTransferencia, setShowTransferencia] = useState(false);
@@ -78,12 +78,12 @@ export const ServicioCliente = ({ userId }) => {
   };
 
 
-  
-
+  console.log(nombre);
+ console.log(userId);
   return (
     <div className="relative pt-20 text-center h-screen flex flex-col items-center justify-center bg-gradient-to-r from-yellow-400 via-blue-500 to-purple-600 animate-gradient-x">
       <p className="text-5xl text-white my-4 mx-auto transition-colors duration-500 ease-in-out hover:text-gray-200">
-        Te damos la Bienvenida al Servicio al Cliente, John id {userId}
+        Te damos la Bienvenida al Servicio al Cliente, {nombre}
       </p>
       {!showPagoYappy && !showTransferencia && !showTargeta && !showPaypal && (
         <button
