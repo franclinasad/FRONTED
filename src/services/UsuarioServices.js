@@ -1,6 +1,6 @@
 import axios, { Axios } from "axios";
 
-const enpoint = "http://localhost:8082/api/v1/usuarios";
+const enpoint = "http://localhost:8080/api/v1/usuarios";
 
 class UsuarioServices{
         getAllUsuarios()

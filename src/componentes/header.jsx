@@ -97,7 +97,7 @@ export const Header = ({ onChangeActiveComponent,userId,toggleSidebar  }) => {
                 <Link to="/ofertas">
                 <button
                   className="h-button2"
-                  
+                  onClick={() => onChangeActiveComponent("John")}
                 >
                   <span className="h-span">OFERTAS</span>
                 </button>

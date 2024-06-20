@@ -9,7 +9,7 @@ const Universidad = ({ userId }) => {
   };
 
   return (
-    <div className="max-w-lg mx-auto my-10 p-6 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-lg shadow-lg text-white">
+    <div className="max-w-lg mx-auto my-10 p-6 bg-gradient-to-r from-blue-600 to-blue-800 rounded-lg shadow-lg text-white">
       <div className="flex justify-center mb-6 space-x-4">
         <img src='/src/assets/image/logoUpea.png' width="130px" alt="Logo UPEA"/>
         <img src='/src/assets/image/ingenieria_sistemas.png' width="100px" alt="Logo Ingeniería de Sistemas"/>

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const url="http://localhost:8082/api/v1/pago"
+const url="http://localhost:8080/api/v1/pago"
 class ClienteService {
     getAllClientes (){
         return axios.get(url);

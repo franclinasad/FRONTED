@@ -16,11 +16,11 @@ const Sidebar = ({ isOpen, toggleSidebar ,nombre }) => {
 
 
 
-
+  
 
 
   return (
-    <div className={`bg-slate-800 w-72 h-full fixed top-0 left-0 transition-all duration-300 ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+    <div className={`bg-slate-700 ax-w-lg mx-auto  bg-gradient-to-r from-black to-slate-  w-72 h-full fixed top-0 left-0 transition-all duration-300 ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}>
       <div className="px-6 py-8 text-white flex flex-col items-center">
         
         

@@ -4,6 +4,11 @@ import { ServicioCliente } from "./serviceClient"
 import {  Inicio } from "./index"
 import { John } from "./imagen"
 import { TipoPago } from "./tipoPago"
+import Productos from "./productos"
+import Ofertas from "./ofertas"
+import Carito from "./Carito"
+import Pedidos from "./Pedidos"
+
 
 
 export const Article = ({activeComponent})=>{
@@ -17,7 +22,15 @@ export const Article = ({activeComponent})=>{
             case 'Inicio':
                 return <Inicio /> 
             case 'TipoPago':
-                return <TipoPago/>   
+                return <TipoPago/>  
+            case 'Productos':
+                return <Productos/>
+            case 'Ofertas':
+                return <Ofertas/>
+            case 'Carito':
+                return <Carito/>
+            case 'Pedidos':
+                return <Pedidos/>   
             default:
                 return <Inicio />     
 
