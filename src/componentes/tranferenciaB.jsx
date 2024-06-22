@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import ClienteService from "../services/ClienteService";
+import UsuarioServices from "../services/UsuarioServices";
 
-export const TranferenciaBancaria = ({ onClose }) => {
+export const TranferenciaBancaria = ({ onClose,userId,totalPedido }) => {
 
   const [unfolding, setUnfolding] = useState(true);
 
@@ -17,41 +18,28 @@ export const TranferenciaBancaria = ({ onClose }) => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const saveOrUpdateCliente = (e) => {
-    e.preventDefault();
-    const cliente = {
-      pedido,
-      monto,
-      fecha,
-      metodo: { idmetodo: 3 } // Aqui es para el idmetodo limber
-    };
 
-    ClienteService.createCliente(cliente)
-      .then((response) => {
-        console.log(response.data);
-        setModalMessage("Transferencia exitosa");
-        setModalType("success");
-        setShowModal(true);
-      })
-      .catch((error) => {
-        console.error(error);
-        setModalMessage("Error al realizar la transferencia");
-        setModalType("error");
-        setShowModal(true);
-      });
-  };
 
-  const handleButtonClick = (e) => {
-    // Validación de campos
-    if (!pedido || !monto || !fecha) {
-      setModalMessage("Por favor, completa todos los campos.");
-      setModalType("error");
-      setShowModal(true);
-      return;
-    }
+  const handleButtonClick = async (e) => {
+
+
+      try {
+        await UsuarioServices.descontarSaldoUsuario(userId, totalPedido);
+        console.log("Saldo descontado correctamente.");
+      } catch (error) {
+        console.error("Error al descontar saldo:", error);
+        // Manejo de errores
+      }
+
+      setTimeout(() => {
+        setUnfolding(false);
+        setTimeout(onClose, 500);
+      }, 1000);
+
+
 
     // Si todos los campos están llenos, procedemos con la transferencia
-    saveOrUpdateCliente(e);
+    
   };
 
   return (
@@ -209,7 +197,7 @@ export const TranferenciaBancaria = ({ onClose }) => {
                   className="w-full border border-gray-400 rounded-lg px-3 py-2 focus:border-blue-500"
                   type="number"
                   placeholder="Monto..."
-                  value={monto}
+                  value={totalPedido}
                   onChange={(e) => setMonto(e.target.value)}
                 />
               </td>

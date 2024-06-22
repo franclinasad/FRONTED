@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import QR from "../assets/image/QR.jpg";
 
-export const PagoYappy = ({ onClose,userId  }) => {
+export const PagoYappy = ({ onClose,userId,totalPedido  }) => {
   const [unfolding, setUnfolding] = useState(true);
 
   return (

@@ -1,18 +1,27 @@
 import React, { useState } from "react";
+import UsuarioServices from "../services/UsuarioServices";
 
-export const Paypal = ({ onClose, userId }) => {
+export const Paypal = ({ onClose, userId,totalPedido }) => {
   const [unfolding, setUnfolding] = useState(true);
   const [amount, setAmount] = useState('');
   const [currency, setCurrency] = useState('USD');
   const [description, setDescription] = useState('');
 
-  const handlePayment = () => {
+  const handlePayment = async () => {
     // Aquí puedes añadir la lógica para manejar el pago, por ejemplo, llamando a una API de PayPal
     console.log('Iniciando pago con los siguientes detalles:');
     console.log('Monto:', amount);
     console.log('Moneda:', currency);
     console.log('Descripción:', description);
     console.log('User ID:', userId);
+    
+    try {
+      await UsuarioServices.descontarSaldoUsuario(userId, totalPedido);
+      console.log("Saldo descontado correctamente.");
+    } catch (error) {
+      console.error("Error al descontar saldo:", error);
+      // Manejo de errores
+    }
 
     // Simula una llamada de pago y cierra el modal después de un retraso
     setTimeout(() => {
@@ -35,6 +44,7 @@ export const Paypal = ({ onClose, userId }) => {
           PAYPAL
         </label>
       </div>
+      <h1>${totalPedido}</h1>
 
       <form className="mt-4">
         <div className="mb-4">
@@ -44,7 +54,7 @@ export const Paypal = ({ onClose, userId }) => {
           <input
             id="amount"
             type="number"
-            value={amount}
+            value={totalPedido}
             onChange={(e) => setAmount(e.target.value)}
             className="w-full p-2 rounded border"
             placeholder="Monto a pagar"

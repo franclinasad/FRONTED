@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import DetalleProductoServicio from "../services/DetalleProductoServicio";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export const Carito = () => {
   const [detallesCarrito, setDetallesCarrito] = useState([]);
   const [error, setError] = useState(null);
   const [totalPedido, setTotalPedido] = useState(0); // Estado para el total del pedido
   const [fechaPedido, setFechaPedido] = useState(""); // Estado para la fecha del pedido
+  const navigate = useNavigate(); // Hook para la navegación
 
   useEffect(() => {
     const fetchDetallesCarrito = async () => {
@@ -58,6 +59,9 @@ export const Carito = () => {
 
     // Aquí deberías llamar al servicio para guardar el pedido en la base de datos
     // y manejar la lógica correspondiente en tu aplicación
+
+    // Navegar a "servicio-al-cliente" pasando el estado totalPedido
+    navigate("/servicio-al-cliente", { state: { totalPedido } });
   };
 
   return (
@@ -67,9 +71,8 @@ export const Carito = () => {
         <button
           onClick={handleComprarTodo}
           className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
-        ><Link to="/servicio-al-cliente">
-         Comprar Todo      
-        </Link>
+        >
+          Comprar Todo
         </button>
       </div>
       {error && <p className="text-red-500 text-center mb-4">{error}</p>}
@@ -87,9 +90,6 @@ export const Carito = () => {
               <p className="text-gray-800 mb-1 font-bold">Precio Unitario: ${detalle.precioUnitario}</p>
               <p className="text-gray-800 mb-4">Cantidad: {detalle.cantidad}</p>
               <div className="flex space-x-4">
-                <Link to="/servicio-al-cliente" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                  Comprar Producto
-                </Link>
                 <button
                   onClick={() => handleDelete(detalle.idDetallePedido)}
                   className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"

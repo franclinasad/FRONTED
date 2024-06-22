@@ -1,17 +1,20 @@
 import React, { useState } from "react";
+import { useLocation } from "react-router-dom";
 import { TipoPago } from "./tipoPago";
 import { PagoYappy } from "./yappy";
 import { TranferenciaBancaria } from "./tranferenciaB";
 import { TargetaCredito } from "./TargetaCredito";
 import { Paypal } from "./Paypal";
 
-export const ServicioCliente = ({ userId,nombre }) => {
+export const ServicioCliente = ({ userId, nombre }) => {
   const [showPaymentType, setShowPaymentType] = useState(false);
   const [showPagoYappy, setShowPagoYappy] = useState(false);
   const [showTransferencia, setShowTransferencia] = useState(false);
-
   const [showTargeta, setShowTargeta] = useState(false);
   const [showPaypal, setShowPaypal] = useState(false);
+
+  const location = useLocation();
+  const { totalPedido } = location.state || {};
 
   /* para el componente yappy */
 
@@ -46,7 +49,6 @@ export const ServicioCliente = ({ userId,nombre }) => {
 
   //targeta
 
-
   const handleShowTargeta = () => {
     setShowPaymentType(false);
     setTimeout(() => {
@@ -61,8 +63,6 @@ export const ServicioCliente = ({ userId,nombre }) => {
     }, 500);
   };
 
-
-
   const handleShowPaypal = () => {
     setShowPaymentType(false);
     setTimeout(() => {
@@ -70,16 +70,17 @@ export const ServicioCliente = ({ userId,nombre }) => {
     }, 500);
   };
 
-  const handleClosePaypal= () => {
+  const handleClosePaypal = () => {
     setShowPaypal(false);
     setTimeout(() => {
       setShowPaymentType(true);
     }, 500);
   };
 
-
   console.log(nombre);
- console.log(userId);
+  console.log(userId);
+  console.log(totalPedido);
+
   return (
     <div className="relative pt-20 text-center h-screen flex flex-col items-center justify-center bg-gradient-to-r from-yellow-400 via-blue-500 to-purple-600 animate-gradient-x">
       <p className="text-5xl text-white my-4 mx-auto transition-colors duration-500 ease-in-out hover:text-gray-200">
@@ -102,10 +103,12 @@ export const ServicioCliente = ({ userId,nombre }) => {
           onPaypalClick={handleShowPaypal}
         />
       )}
-      {showPagoYappy && <PagoYappy onClose={handleClosePagoYappy} />}
-      {showTransferencia && <TranferenciaBancaria onClose={handleCloseTransferencia} />}
-      {showTargeta && <TargetaCredito onClose={handleCloseTargeta} userId={userId} />}
-      {showPaypal && <Paypal onClose={handleClosePaypal} userId={userId} />}
+      {showPagoYappy && <PagoYappy onClose={handleClosePagoYappy} userId={userId} totalPedido={totalPedido} />}
+      {showTransferencia && <TranferenciaBancaria onClose={handleCloseTransferencia} userId={userId} totalPedido={totalPedido} />}
+      {showTargeta && <TargetaCredito onClose={handleCloseTargeta} userId={userId} totalPedido={totalPedido} />}
+      {showPaypal && <Paypal onClose={handleClosePaypal} userId={userId} totalPedido={totalPedido} />}
     </div>
   );
 };
+
+export default ServicioCliente;
